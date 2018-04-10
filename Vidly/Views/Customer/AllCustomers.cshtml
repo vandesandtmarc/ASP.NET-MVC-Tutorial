@@ -1,0 +1,22 @@
+﻿
+
+@model Vidly.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Customers.Count == 0)
+{
+    <text> We dont have any customers yet. </text>
+}
+else
+{
+        foreach (var customer in Model.Customers) //Ask someone if this should have @ sign infront of it ? as both compiles and gives 0 issues at runtime
+        {
+            @Html.ActionLink(customer.Name, "Customers", "Details", new { id = customer.Id }, null)
+            <br/>
+        }
+}
+
